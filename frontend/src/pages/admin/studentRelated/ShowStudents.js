@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { getAllStudents } from '../../../redux/studentRelated/studentHandle';
-import { deleteUser } from '../../../redux/userRelated/userHandle';
 import {
     Paper, Box, IconButton
 } from '@mui/material';
@@ -70,7 +69,7 @@ const ShowStudents = () => {
     })
 
     const StudentButtonHaver = ({ row }) => {
-        const options = ['Take Attendance', 'Provide Marks'];
+        const options = ['Take Attendance', 'Provide Marks','Provide Assignmet'];
 
         const [open, setOpen] = React.useState(false);
         const anchorRef = React.useRef(null);
@@ -83,6 +82,9 @@ const ShowStudents = () => {
             } else if (selectedIndex === 1) {
                 handleMarks();
             }
+             else if (selectedIndex === 2) {
+                handleAssignment();
+            }
         };
 
         const handleAttendance = () => {
@@ -90,6 +92,9 @@ const ShowStudents = () => {
         }
         const handleMarks = () => {
             navigate("/Admin/students/student/marks/" + row.id)
+        };
+        const handleAssignment = () => {
+            navigate("/Admin/students/student/assignment/" + row.id)
         };
 
         const handleMenuItemClick = (event, index) => {

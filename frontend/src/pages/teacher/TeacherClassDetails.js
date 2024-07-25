@@ -24,6 +24,7 @@ const TeacherClassDetails = () => {
     if (error) {
         console.log(error)
     }
+    
 
     const studentColumns = [
         { id: 'name', label: 'Name', minWidth: 170 },
@@ -37,7 +38,7 @@ const TeacherClassDetails = () => {
             id: student._id,
         };
     })
-
+    
     const StudentsButtonHaver = ({ row }) => {
         const options = ['Take Attendance', 'Provide Marks'];
 
@@ -60,6 +61,7 @@ const TeacherClassDetails = () => {
         const handleMarks = () => {
             navigate(`/Teacher/class/student/marks/${row.id}/${subjectID}`)
         };
+       
 
         const handleMenuItemClick = (event, index) => {
             setSelectedIndex(index);
@@ -79,6 +81,7 @@ const TeacherClassDetails = () => {
         };
         return (
             <>
+            
                 <BlueButton
                     variant="contained"
                     onClick={() =>
@@ -152,11 +155,13 @@ const TeacherClassDetails = () => {
                     <Typography variant="h4" align="center" gutterBottom>
                         Class Details
                     </Typography>
+                
                     {getresponse ? (
                         <>
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                                 No Students Found
                             </Box>
+                            
                         </>
                     ) : (
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -169,6 +174,23 @@ const TeacherClassDetails = () => {
                             }
                         </Paper>
                     )}
+                    <Paper sx={{
+                        justifyContent:"space-between"
+                    }}>
+                    
+                    <BlueButton  sx={{
+                            position:"relative",
+                            Right:"1"
+                            
+                        }}
+                    variant="contained"
+                    onClick={() =>
+                        navigate("/create-assignment")
+                    }
+                >
+                    Provide Assignment
+                </BlueButton>
+                </Paper>
                 </>
             )}
         </>

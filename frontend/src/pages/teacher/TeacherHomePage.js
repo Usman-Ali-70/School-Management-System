@@ -4,7 +4,7 @@ import CountUp from 'react-countup';
 import styled from 'styled-components';
 import Students from "../../assets/img1.png";
 import Lessons from "../../assets/subjects.svg";
-import Tests from "../../assets/assignment.svg";
+import Assignment from "../../assets/assignment.svg";
 import Time from "../../assets/time.svg";
 import { getClassStudents, getSubjectDetails } from '../../redux/sclassRelated/sclassHandle';
 import { useDispatch, useSelector } from 'react-redux';
@@ -51,9 +51,9 @@ const TeacherHomePage = () => {
                     </Grid>
                     <Grid item xs={12} md={3} lg={3}>
                         <StyledPaper>
-                            <img src={Tests} alt="Tests" />
+                            <img src={Assignment} alt="Assignment" />
                             <Title>
-                                Tests Taken
+                                Assignment Taken
                             </Title>
                             <Data start={0} end={24} duration={4} />
                         </StyledPaper>

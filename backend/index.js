@@ -17,7 +17,7 @@ app.use(express.json({ limit: '10mb' }))
 app.use(cors())
 
 mongoose
-    .connect(process.env.MONGO_URL, {
+    .connect(process.env.MONGO_URL= "mongodb+srv://newuser123:user123@atlascluster.kbjmszb.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
@@ -25,7 +25,8 @@ mongoose
     .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
 
 app.use('/', Routes);
-
+app.use('/api/assignments', require('./routes/assignments'));
+app.use('/api/submissions', require('./routes/submissions'));
 app.listen(PORT, () => {
     console.log(`Server started at port no. ${PORT}`)
 })

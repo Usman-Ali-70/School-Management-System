@@ -158,7 +158,7 @@ const updateExamResult = async (req, res) => {
         );
 
         if (existingResult) {
-            existingResult.marksObtained = marksObtained;
+            existingResult.marksObtained = Obtained;
         } else {
             student.examResult.push({ subName, marksObtained });
         }
