@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const Teacher = require('../models/teacherSchema.js');
 const Subject = require('../models/subjectSchema.js');
-
+const Assignment = require('../models/Assignment.js');
 const teacherRegister = async (req, res) => {
     const { name, email, password, role, school, teachSubject, teachSclass } = req.body;
     try {
@@ -192,7 +192,53 @@ const teacherAttendance = async (req, res) => {
     }
 };
 
+const createAssignment = async (req, res) => {
+    const { teacherId, classId, assignmentName, dueDate, description } = req.body;
+    try {
+      const teacher = await Teacher.findById(teacherId);
+      const sclass = await sClass.findById(classId);
+      if (!teacher || !sclass) {
+        return res.status(404).json({ message: 'Teacher or class not found' });
+      }
+      if (!teacher.teachSclass.equals(sclass._id)) {
+        return res.status(403).json({ message: 'Teacher does not have permission to create assignments for this class' });
+      }
+      const assignment = new Assignment({ assignmentName, dueDate, description, teacher, sclass });
+      await assignment.save();
+      teacher.assignments.push(assignment);
+      sclass.assignments.push(assignment);
+      await teacher.save();
+      await sclass.save();
+      // Notify students of the new assignment
+      const students = await Student.find({ sclass: sclass._id });
+      students.forEach((student) => {
+        // Send notification to student
+        console.log(`Notifying student ${student.name} of new assignment`);
+      });
+      res.send(assignment);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  };
+
+  const gradeSubmission = async (req, res) => {
+    const { submissionId, grade, feedback } = req.body;
+    try {
+      const submission = await Submission.findById(submissionId);
+      if (!submission) {
+        return res.status(404).json({ message: 'Submission not found' });
+      }
+      submission.grade = grade;
+      submission.feedback = feedback;
+      await submission.save();
+      res.send(submission);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  };
 module.exports = {
+    gradeSubmission,
+    createAssignment,
     teacherRegister,
     teacherLogIn,
     getTeachers,

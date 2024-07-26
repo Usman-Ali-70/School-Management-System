@@ -7,6 +7,8 @@ const { adminRegister, adminLogIn, getAdminDetail} = require('../controllers/adm
 const { sclassCreate, sclassList, deleteSclass, deleteSclasses, getSclassDetail, getSclassStudents } = require('../controllers/class-controller.js');
 const { noticeCreate, noticeList, deleteNotices, deleteNotice, updateNotice } = require('../controllers/notice-controller.js');
 const {
+    submission,
+    submitAssignment,
     studentRegister,
     studentLogIn,
     getStudents,
@@ -21,7 +23,9 @@ const {
     clearAllStudentsAttendance,
     removeStudentAttendanceBySubject,
     removeStudentAttendance } = require('../controllers/student_controller.js');
-const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, deleteSubject, freeSubjectList, allSubjects, deleteSubjects } = require('../controllers/subject-controller.js');
+const { subjectCreate, classSubjects, deleteSubjectsByClass, getSubjectDetail, deleteSubject, freeSubjectList, allSubjects, deleteSubjects, gradeSubmission,
+    assignment,
+    createAssignment, } = require('../controllers/subject-controller.js');
 const { teacherRegister, teacherLogIn, getTeachers, getTeacherDetail, deleteTeachers, deleteTeachersByClass, deleteTeacher, updateTeacherSubject, teacherAttendance } = require('../controllers/teacher-controller.js');
 
 // Admin
@@ -84,7 +88,14 @@ router.delete("/Notice/:id", deleteNotice)
 
 router.put("/Notice/:id", updateNotice)
 
+// // Create Assignment
+// router.post('/assignment', createAssignment);
 
+// // Submit Assignment
+// router.post('/assignment/:assignmentId/submission', submitAssignment);
+
+// // Grade Submission
+// router.patch('/submission/:submissionId', gradeSubmission);
 
 // Sclass
 

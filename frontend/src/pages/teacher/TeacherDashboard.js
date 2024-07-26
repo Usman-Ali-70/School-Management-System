@@ -16,15 +16,12 @@ import Logout from "../Logout";
 import AccountMenu from "../../components/AccountMenu";
 import { AppBar, Drawer } from "../../components/styles";
 import StudentAttendance from "../admin/studentRelated/StudentAttendance";
-import  AssignmentForm  from "../../components/AssignmentForm";
-import  UploadForm  from "../../components/UploadForm";
-import  GradeAssignment  from "../../components/GradeAssignment";
 import TeacherClassDetails from "./TeacherClassDetails";
 import TeacherHomePage from "./TeacherHomePage";
 import TeacherProfile from "./TeacherProfile";
 import TeacherViewStudent from "./TeacherViewStudent";
 import StudentExamMarks from "../admin/studentRelated/StudentExamMarks";
-
+import CreateAssignment from "./CreateAssignment";
 const TeacherDashboard = () => {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
@@ -83,7 +80,7 @@ const TeacherDashboard = () => {
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/Teacher/dashboard" element={<TeacherHomePage />} />
             <Route path="/Teacher/profile" element={<TeacherProfile />} />
-
+            <Route path="/create-assignment" component={CreateAssignment} />
             <Route path="/Teacher/class" element={<TeacherClassDetails />} />
             <Route
               path="/Teacher/class/student/:id"
@@ -98,9 +95,6 @@ const TeacherDashboard = () => {
               path="/Teacher/class/student/marks/:studentID/:subjectID"
               element={<StudentExamMarks situation="Subject" />}
             />
-            <Route path="/create-assignment" component={AssignmentForm} />
-            <Route path="/upload-assignment" component={UploadForm} />
-            <Route path="/grade-assignment/:id" component={GradeAssignment} />
             <Route path="/logout" element={<Logout />} />
           </Routes>
         </Box>

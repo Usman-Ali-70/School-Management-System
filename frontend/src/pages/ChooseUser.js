@@ -152,12 +152,12 @@ const StyledContainer = styled.div`
 const StyledPaper = styled(Paper)`
   padding: 20px;
   text-align: center;
-  background-color: #1f1f38;
+  background-color: #333369;
   color:rgba(255, 255, 255, 0.6);
   cursor:pointer;
 
   &:hover {
-    background-color: #2c2c6c;
+    background-color: #313164;
     color:white;
   }
 `;

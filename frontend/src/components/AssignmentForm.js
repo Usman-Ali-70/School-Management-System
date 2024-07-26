@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./AssignmentForm.css";
 
 const AssignmentForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [dueDate, setDueDate] = useState('');
-  const [createdBy] = useState(''); // This should be the logged-in teacher's ID
+  const [createdBy, setCreatedBy] = useState(''); // This should be the logged-in teacher's ID
 
   const handleSubmit = async (e) => {
     e.preventDefault();

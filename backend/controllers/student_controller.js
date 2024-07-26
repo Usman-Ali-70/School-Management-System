@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const Student = require('../models/studentSchema.js');
 const Subject = require('../models/subjectSchema.js');
-
+const Submission = require('../models/Submission.js')
 const studentRegister = async (req, res) => {
     try {
         const salt = await bcrypt.genSalt(10);
@@ -271,8 +271,31 @@ const removeStudentAttendance = async (req, res) => {
     }
 };
 
+const submitAssignment = async (req, res) => {
+    const { assignmentId, studentId, file } = req.body;
+    try {
+      const assignment = await Assignment.findById(assignmentId);
+      const student = await Student.findById(studentId);
+      if (!assignment || !student) {
+        return res.status(404).json({ message: 'Assignment or student not found' });
+      }
+      if (!assignment.isValid) {
+        return res.status(400).json({ message: 'Assignment is not valid' });
+      }
+      const submission = new Submission({ assignment, student, file });
+      await submission.save();
+      assignment.submissions.push(submission);
+    student.submissions.push(submission);
+    await assignment.save();
+    await student.save();
+    res.send(submission);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 
 module.exports = {
+    submitAssignment,
     studentRegister,
     studentLogIn,
     getStudents,

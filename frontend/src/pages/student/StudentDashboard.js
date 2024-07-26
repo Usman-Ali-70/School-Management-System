@@ -19,6 +19,8 @@ import ViewStdAttendance from './ViewStdAttendance';
 import Logout from '../Logout'
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
+import UploadAssignment from './UploadAssignment';
+import CreateAssignment from '../teacher/CreateAssignment';
 
 const StudentDashboard = () => {
     const [open, setOpen] = useState(true);
@@ -74,7 +76,8 @@ const StudentDashboard = () => {
                         <Route path='*' element={<Navigate to="/" />} />
                         <Route path="/Student/dashboard" element={<StudentHomePage />} />
                         <Route path="/Student/profile" element={<StudentProfile />} />
-
+                        <Route path="/Student/assignment" element={< UploadAssignment />} />
+                        <Route path="/create-assignment" component={CreateAssignment} />
                         <Route path="/Student/subjects" element={<StudentSubjects />} />
                         <Route path="/Student/attendance" element={<ViewStdAttendance />} />
 

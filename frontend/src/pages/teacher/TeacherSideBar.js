@@ -47,33 +47,7 @@ const TeacherSideBar = () => {
         </ListItemButton>
       </React.Fragment>
       <Divider sx={{ my: 1 }} />
-      <React.Fragment>
-        <ListItemButton component={Link} to="/">
-          <ListItemIcon>
-            <HomeIcon
-              color={
-                location.pathname === ("/" || "/Teacher/dashboard")
-                  ? "primary"
-                  : "inherit"
-              }
-            />
-          </ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItemButton>
-        <ListItemButton component={Link} to="/Teacher/class">
-          <ListItemIcon>
-            <ClassOutlinedIcon
-              color={
-                location.pathname.startsWith("/Teacher/class")
-                  ? "primary"
-                  : "inherit"
-              }
-            />
-          </ListItemIcon>
-          <ListItemText primary={`Class ${sclassName.sclassName}`} />
-        </ListItemButton>
       
-      </React.Fragment>
       <Divider sx={{ my: 1 }} />
       <React.Fragment>
         <ListSubheader component="div" inset>

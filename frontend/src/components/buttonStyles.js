@@ -7,8 +7,8 @@ export const RedButton = styled(Button)`
     color: white;
     margin-left: 4px;
     &:hover {
-      background-color: #eb7979;
-      border-color: #f26767;
+      background-color: #CB6464;
+      border-color: #F36969;
       box-shadow: none;
     }
   }
@@ -41,10 +41,10 @@ export const DarkRedButton = styled(Button)`
 
 export const BlueButton = styled(Button)`
   && {
-    background-color: #080a43;
+    background-color: #000CFD;
     color: #fff;
     &:hover {
-      background-color: #0a1e82;
+      background-color: #263DAD;
     }
   }
 `;
