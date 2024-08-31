@@ -17,7 +17,7 @@ app.use(express.json({ limit: '10mb' }))
 app.use(cors())
 
 mongoose
-    .connect(process.env.MONGO_URL, {
+    .connect(process.env.MONGO_URL = "mongodb+srv://newuser123:user123@atlascluster.kbjmszb.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
