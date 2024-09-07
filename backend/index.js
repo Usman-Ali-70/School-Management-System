@@ -10,8 +10,7 @@ const PORT = process.env.PORT || 3000
 
 require('dotenv').config(); 
 app.use(cors({
-    origin: 'https://school-management-system-six-delta.vercel.app', // Replace with your React frontend URL
-  }));
+    origin: 'https://school-management-system-six-delta.vercel.app', 
 app.use(bodyParser.json({ limit: '10mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
 
